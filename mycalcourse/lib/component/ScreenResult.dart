@@ -1,12 +1,17 @@
 /*--------------------------------------------------------Ecran De resultats---------------------------------*/
 import 'package:flutter/material.dart';
 
-class ScreenResult extends StatelessWidget {
+class ScreenResult extends StatefulWidget {
   String title;
-  double result;
+  var result;
 
   ScreenResult(this.title, this.result);
 
+  @override
+  State<ScreenResult> createState() => _ScreenResultState();
+}
+
+class _ScreenResultState extends State<ScreenResult> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -14,9 +19,9 @@ class ScreenResult extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Text(
-              title.toUpperCase(),
+              widget.title.toUpperCase(),
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
@@ -24,11 +29,11 @@ class ScreenResult extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Text(
-              result.toString() + " €",
+              widget.result.toString() + " €",
               style: TextStyle(
-                fontSize: 30,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
             ),

@@ -1,24 +1,47 @@
 import 'package:flutter/material.dart';
-/* -------------------------------------------------boutton ---------------------------------------------------*/
-class buttons extends StatelessWidget {
-  String numberButton;
+import 'package:mycalcourse/controllers/Concat.dart';
+import 'package:mycalcourse/view/HomeScreen.dart';
 
-  buttons(this.numberButton);
+Concat concat = Concat();
+List dynamicNumber = [];
+
+/* -------------------------------------------------boutton ---------------------------------------------------*/
+class buttons extends StatefulWidget {
+  var numberButton;
+  dynamic number;
+
+  buttons(this.numberButton, this.number);
 
   @override
+  State<buttons> createState() => _buttonsState();
+}
+
+class _buttonsState extends State<buttons> {
+  @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () {},
-      backgroundColor: Colors.grey.withOpacity(0.1),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            numberButton,
-            style: TextStyle(
-                color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
-          ),
-        ],
+    return Container(
+      width: 10,
+      height: 10,
+      child: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            concat.concatNumber(widget.number);
+          });
+        },
+        splashColor: Colors.black,
+        backgroundColor: Colors.grey.withOpacity(0.5),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              widget.numberButton,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
       ),
     );
   }
