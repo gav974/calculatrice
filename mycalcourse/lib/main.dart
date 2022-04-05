@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mycalcourse/controllers/AjoutMontantCourse.dart';
 import 'package:mycalcourse/controllers/Concat.dart';
 import 'package:mycalcourse/view/HomeScreen.dart';
 import 'package:provider/provider.dart';
@@ -29,8 +30,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ChangeNotifierProvider(
-        create: (_) => Concat(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider<Concat>(create: (_) => Concat()),
+          ChangeNotifierProvider<AjoutMontantCourse>(
+            create: (BuildContext context) => AjoutMontantCourse(),
+          ),
+        ],
         child: courseCalc(),
       ),
     );

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import '../component/Buttons.dart';
@@ -11,13 +13,18 @@ class Concat with ChangeNotifier {
       //multiplicate
       return null;
     }
-    if (dynamicNumber.length >= 6) {
+
+    if (nombre == 0 && dynamicNumber.isEmpty == true) {
       return null;
-    } else {
-      dynamicNumber.add(nombre); //ajoute une valeur dans une liste
     }
 
-    dynamicValue = dynamicNumber.join(); //concatene la valeur
+    if (dynamicNumber.length >= 6) {
+      return;
+    } else {
+      dynamicNumber.add(nombre); //ajoute une valeur dans une liste
+      dynamicValue = dynamicNumber.join(); //concatene la valeur
+
+    }
 
     print("dynamicNumber $dynamicNumber");
     print("dynamicvalue $dynamicValue");
@@ -39,6 +46,12 @@ class Concat with ChangeNotifier {
     print("dynamicNumber $dynamicNumber");
     print("dynamicvalue $dynamicValue");
 
+    notifyListeners();
+  }
+
+  void eraseDynamicValue() {
+    dynamicNumber.clear();
+    dynamicValue = "0";
     notifyListeners();
   }
 

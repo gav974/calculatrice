@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:mycalcourse/controllers/AjoutMontantCourse.dart';
 import 'package:provider/provider.dart';
-import '../controllers/Concat.dart';
 import '../component/ActionButton.dart';
 import '../component/ButtonScreen.dart';
 import '../component/DynamicScreen.dart';
 import '../component/ScreenResult.dart';
 
-Concat concat = Concat();
-
 List course = [];
 num budget = 520;
 var sumCourse = 0;
-dynamic dynamicValue = "0";
+String dynamicValue = "0";
 
 /*--------------------------------------------------WIDGET homescreen------------------------------------------------*/
 class homeScreen extends StatefulWidget {
@@ -24,6 +22,7 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   @override
   Widget build(BuildContext context) {
+    AjoutMontantCourse amc = Provider.of<AjoutMontantCourse>(context);
     return Column(
       children: [
         ScreenResult(
@@ -35,7 +34,7 @@ class _homeScreenState extends State<homeScreen> {
         ),
         ScreenResult(
           'Total',
-          sumCourse.toString(),
+          (amc.sommeCourse == "") ? "0 €" : '${amc.sommeCourse}',
         ),
         const Divider(
           height: 1,
