@@ -1,14 +1,25 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mycalcourse/controllers/Concat.dart';
 import 'package:mycalcourse/view/HomeScreen.dart';
+import 'package:provider/provider.dart';
 
 /*------------------------------------- App start-------------------------------------------*/
 void main() async {
-  runApp(MyApp());
+  runApp(
+    MyApp(),
+  );
 
-  await SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  if (Platform.isAndroid == true) {
+    await SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
+    );
+  } else {
+    return null;
+  }
 }
+
 /*--------------------------------------------------------------------------------------------- */
 
 /*------------------------------------------------------initialisation homescreen -----------------------------------*/
@@ -18,7 +29,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: courseCalc(),
+      home: ChangeNotifierProvider(
+        create: (_) => Concat(),
+        child: courseCalc(),
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../controllers/Concat.dart';
 import '../component/ActionButton.dart';
 import '../component/ButtonScreen.dart';
@@ -7,12 +8,12 @@ import '../component/ScreenResult.dart';
 
 Concat concat = Concat();
 
-late List course;
-late double budget;
-var sumCourse;
-dynamic dynamicValue;
+List course = [];
+num budget = 520;
+var sumCourse = 0;
+dynamic dynamicValue = "0";
 
-/*--------------------------------------------------widget homescreen------------------------------------------------*/
+/*--------------------------------------------------WIDGET homescreen------------------------------------------------*/
 class homeScreen extends StatefulWidget {
   const homeScreen({Key? key}) : super(key: key);
 
@@ -22,13 +23,6 @@ class homeScreen extends StatefulWidget {
 
 class _homeScreenState extends State<homeScreen> {
   @override
-  void initState() {
-    super.initState();
-    course = [];
-    budget = 250;
-    sumCourse = 0;
-  }
-
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -36,15 +30,15 @@ class _homeScreenState extends State<homeScreen> {
           'Mon budget ',
           budget,
         ),
-        Divider(
-          height: 3,
+        const Divider(
+          height: 1,
         ),
         ScreenResult(
           'Total',
           sumCourse.toString(),
         ),
-        Divider(
-          height: 3,
+        const Divider(
+          height: 1,
         ),
         DynamicScreen(),
         Expanded(
@@ -55,10 +49,13 @@ class _homeScreenState extends State<homeScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             actionButton(
-              namedButton: '=',
+              namedButton: '+',
             ),
             actionButton(
-              namedButton: 'C',
+              namedButton: '-',
+            ),
+            actionButton(
+              namedButton: '<-',
             ),
           ],
         ),

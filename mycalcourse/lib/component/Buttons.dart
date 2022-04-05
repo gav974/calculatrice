@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mycalcourse/controllers/Concat.dart';
-import 'package:mycalcourse/view/HomeScreen.dart';
+import 'package:provider/provider.dart';
 
-Concat concat = Concat();
 List dynamicNumber = [];
 
 /* -------------------------------------------------boutton ---------------------------------------------------*/
@@ -19,6 +18,7 @@ class buttons extends StatefulWidget {
 class _buttonsState extends State<buttons> {
   @override
   Widget build(BuildContext context) {
+    Concat concat = Provider.of<Concat>(context);
     return Container(
       width: 10,
       height: 10,

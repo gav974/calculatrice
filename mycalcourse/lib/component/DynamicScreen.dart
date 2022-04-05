@@ -1,28 +1,14 @@
 /*--------------------------------------------------ECRAN dynamique-------------------------------------------*/
 import 'package:flutter/material.dart';
-import 'package:mycalcourse/component/Buttons.dart';
 import 'package:mycalcourse/controllers/Concat.dart';
-import 'package:mycalcourse/view/HomeScreen.dart';
+import 'package:provider/provider.dart';
 
-Concat concat = Concat();
-
-class DynamicScreen extends StatefulWidget {
+class DynamicScreen extends StatelessWidget {
   @override
-  State<DynamicScreen> createState() => _DynamicScreenState();
-}
-
-class _DynamicScreenState extends State<DynamicScreen> {
-  @override
-  void initState() {
-    super.initState();
-    setState(() {});
-
-    // Additional initialization of the State
-  }
-
   Widget build(BuildContext context) {
+    Concat concat = Provider.of<Concat>(context);
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
           child: Align(
@@ -30,7 +16,9 @@ class _DynamicScreenState extends State<DynamicScreen> {
             child: Padding(
               padding: const EdgeInsets.only(top: 10.0, right: 25, bottom: 15),
               child: Text(
-                concat.dynamicResult + " €",
+                (concat.dynamicResult != "")
+                    ? concat.dynamicResult + " €"
+                    : "0 €",
                 style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
               ),
             ),
