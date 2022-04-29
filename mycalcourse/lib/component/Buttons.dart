@@ -21,7 +21,7 @@ class buttons extends StatefulWidget {
 }
 
 class _buttonsState extends State<buttons> {
-  final _colors = Colors.grey.withOpacity(0.5);
+  Color colors = Colors.blue.withOpacity(0.5);
   Color colorstring = Colors.black;
   @override
   Widget build(BuildContext context) {
@@ -31,11 +31,12 @@ class _buttonsState extends State<buttons> {
       width: 10,
       height: 10,
       child: FloatingActionButton(
+        heroTag: null,
         onPressed: () {
           setState(
             () {
               if (dynamicNumber.isNotEmpty && widget.number == "X") {
-                colorstring = Colors.grey;
+                colorstring = Colors.white60;
                 return;
               } else if (dynamicNumber.isEmpty &&
                   widget.number == "X" &&
@@ -50,7 +51,7 @@ class _buttonsState extends State<buttons> {
           );
         },
         splashColor: Colors.black,
-        backgroundColor: _colors,
+        backgroundColor: colors,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

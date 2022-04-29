@@ -10,7 +10,15 @@ import 'package:provider/provider.dart';
 /*------------------------------------- App start-------------------------------------------*/
 void main() async {
   runApp(
-    MyApp(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<Concat>(create: (_) => Concat()),
+        ChangeNotifierProvider<AjoutMontantCourse>(
+          create: (_) => AjoutMontantCourse(),
+        ),
+      ],
+      child: MyApp(),
+    ),
   );
 
   if (Platform.isAndroid) {
@@ -31,15 +39,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MultiProvider(
-        providers: [
-          ChangeNotifierProvider<Concat>(create: (_) => Concat()),
-          ChangeNotifierProvider<AjoutMontantCourse>(
-            create: (BuildContext context) => AjoutMontantCourse(),
-          ),
-        ],
-        child: SaisieBudget(),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: SaisieBudget(),
     );
   }
 }

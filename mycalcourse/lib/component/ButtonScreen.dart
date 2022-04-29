@@ -16,11 +16,11 @@ class _buttonScreenState extends State<buttonScreen> {
   @override
   Widget build(BuildContext context) {
     return GridView.count(
-      childAspectRatio: 1.5,
+      childAspectRatio: 1.6,
       crossAxisCount: 3,
       shrinkWrap: true,
-      mainAxisSpacing: 2,
-      crossAxisSpacing: 2,
+      mainAxisSpacing: 4,
+      crossAxisSpacing: 1,
       children: [
         buttons(
           databuttons[0].toString(),

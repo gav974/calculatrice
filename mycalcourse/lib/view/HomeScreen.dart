@@ -28,14 +28,14 @@ class _homeScreenState extends State<homeScreen> {
       children: [
         ScreenResult(
           'Mon budget ',
-          budget,
+          budget.text,
         ),
         const Divider(
           height: 1,
         ),
         ScreenResult(
           'Total',
-          (amc.sommeCourse == null) ? "0 €" : '${amc.sommeCourse}',
+          (amc.sommeCourse == null) ? "0" : '${amc.sommeCourse}',
         ),
         const Divider(
           height: 1,
@@ -49,12 +49,15 @@ class _homeScreenState extends State<homeScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             actionButton(
+              colorAction: Colors.green,
               namedButton: '+',
             ),
             actionButton(
+              colorAction: Colors.red,
               namedButton: '-',
             ),
             actionButton(
+              colorAction: Colors.orange,
               namedButton: '<-',
             ),
           ],

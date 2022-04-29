@@ -8,7 +8,9 @@ import '../controllers/Concat.dart';
 
 class actionButton extends StatefulWidget {
   String namedButton;
-  actionButton({required this.namedButton});
+  Color colorAction;
+
+  actionButton({required this.colorAction, required this.namedButton});
 
   @override
   State<actionButton> createState() => _actionButtonState();
@@ -25,6 +27,7 @@ class _actionButtonState extends State<actionButton> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ElevatedButton(
+          style: ElevatedButton.styleFrom(primary: widget.colorAction),
           onPressed: (() {
             setState(() {
               if (widget.namedButton == "<-") {
