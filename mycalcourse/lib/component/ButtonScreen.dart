@@ -54,7 +54,10 @@ class _buttonScreenState extends State<buttonScreen> {
           databuttons[7].toString(),
           databuttons[7],
         ),
-        buttons(databuttons[8].toString(), databuttons[8]),
+        buttons(
+          databuttons[8].toString(),
+          databuttons[8],
+        ),
         buttons(
           databuttons[9],
           databuttons[9],

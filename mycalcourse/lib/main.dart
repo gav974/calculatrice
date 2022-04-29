@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:mycalcourse/controllers/AjoutMontantCourse.dart';
 import 'package:mycalcourse/controllers/Concat.dart';
 import 'package:mycalcourse/view/HomeScreen.dart';
+import 'package:mycalcourse/view/Saisiebudget.dart';
 import 'package:provider/provider.dart';
 
 /*------------------------------------- App start-------------------------------------------*/
@@ -12,7 +13,7 @@ void main() async {
     MyApp(),
   );
 
-  if (Platform.isAndroid == true) {
+  if (Platform.isAndroid) {
     await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
     );
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
             create: (BuildContext context) => AjoutMontantCourse(),
           ),
         ],
-        child: courseCalc(),
+        child: SaisieBudget(),
       ),
     );
   }
@@ -58,7 +59,9 @@ class _courseCalcState extends State<courseCalc> {
         title: Text('Calcul Mes Courses'),
         centerTitle: true,
       ),
-      body: SafeArea(child: homeScreen()),
+      body: SafeArea(
+        child: homeScreen(),
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mycalcourse/view/Saisiebudget.dart';
 import 'package:mycalcourse/controllers/AjoutMontantCourse.dart';
 import 'package:provider/provider.dart';
 import '../component/ActionButton.dart';
@@ -7,7 +8,7 @@ import '../component/DynamicScreen.dart';
 import '../component/ScreenResult.dart';
 
 List course = [];
-num budget = 520;
+
 var sumCourse = 0;
 String dynamicValue = "0";
 
@@ -34,7 +35,7 @@ class _homeScreenState extends State<homeScreen> {
         ),
         ScreenResult(
           'Total',
-          (amc.sommeCourse == "") ? "0 €" : '${amc.sommeCourse}',
+          (amc.sommeCourse == null) ? "0 €" : '${amc.sommeCourse}',
         ),
         const Divider(
           height: 1,

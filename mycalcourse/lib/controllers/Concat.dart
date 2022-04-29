@@ -10,7 +10,6 @@ class Concat with ChangeNotifier {
 
   void concatNumber(nombre) {
     if (nombre == "X") {
-      //multiplicate
       return null;
     }
 
@@ -28,7 +27,6 @@ class Concat with ChangeNotifier {
 
     print("dynamicNumber $dynamicNumber");
     print("dynamicvalue $dynamicValue");
-
     notifyListeners();
   }
 /*-----------------------------------------------------------------------*/

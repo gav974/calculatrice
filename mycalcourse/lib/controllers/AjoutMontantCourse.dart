@@ -22,6 +22,15 @@ class AjoutMontantCourse with ChangeNotifier {
     notifyListeners();
   }
 
+  void MultiplicateAddCourse() {
+    sommeCourse = 0;
+    for (var i = 0; i < course.length; i++) {
+      sommeCourse += course[i];
+    }
+
+    notifyListeners();
+  }
+
   void deleteCourse(number) {
     if (number.length == 1) {
       course.clear();
